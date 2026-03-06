@@ -1,6 +1,7 @@
 import React from 'react'
-import Link from 'gatsby-link'
+import { Link } from 'gatsby'
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 
 export default class Index extends React.Component {
   render() {
@@ -48,3 +49,5 @@ export default class Index extends React.Component {
     )
   }
 }
+
+export const Head = () => <Seo title="Form Examples" />

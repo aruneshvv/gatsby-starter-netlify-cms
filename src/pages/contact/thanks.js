@@ -1,7 +1,8 @@
 import React from 'react'
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 
-export default () => (
+const ThanksPage = () => (
   <Layout>
     <section className="section">
       <div className="container">
@@ -13,3 +14,7 @@ export default () => (
     </section>
   </Layout>
 )
+
+export default ThanksPage
+
+export const Head = () => <Seo title="Thank You" />

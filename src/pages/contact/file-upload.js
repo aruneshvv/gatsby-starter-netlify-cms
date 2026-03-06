@@ -1,6 +1,7 @@
 import React from 'react'
-import { navigate } from 'gatsby-link'
+import { navigate } from 'gatsby'
 import Layout from '../../components/Layout'
+import Seo from '../../components/Seo'
 
 function encode(data) {
   const formData = new FormData()
@@ -106,3 +107,5 @@ export default class Contact extends React.Component {
     )
   }
 }
+
+export const Head = () => <Seo title="File Upload" />

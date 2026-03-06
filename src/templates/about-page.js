@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import Seo from '../components/Seo'
 
 export const AboutPageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
@@ -50,6 +51,8 @@ AboutPage.propTypes = {
 }
 
 export default AboutPage
+
+export const Head = () => <Seo title="About" />
 
 export const aboutPageQuery = graphql`
   query AboutPage($id: String!) {

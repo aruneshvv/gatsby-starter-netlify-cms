@@ -1,10 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import { getSrc } from 'gatsby-plugin-image'
 
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import Seo from '../components/Seo'
 
 export const IndexPageTemplate = ({
   image,
@@ -20,7 +22,7 @@ export const IndexPageTemplate = ({
       className="full-width-image margin-top-0"
       style={{
         backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+          !!image.childImageSharp ? getSrc(image.childImageSharp.gatsbyImageData) : image
         })`,
         backgroundPosition: `top left`,
         backgroundAttachment: `fixed`,
@@ -154,6 +156,8 @@ IndexPage.propTypes = {
 
 export default IndexPage
 
+export const Head = () => <Seo />
+
 export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
@@ -161,9 +165,7 @@ export const pageQuery = graphql`
         title
         image {
           childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+            gatsbyImageData(width: 2048, quality: 100, layout: FULL_WIDTH)
           }
         }
         heading
@@ -177,9 +179,7 @@ export const pageQuery = graphql`
           blurbs {
             image {
               childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
+                gatsbyImageData(width: 240, quality: 64, layout: CONSTRAINED)
               }
             }
             text
